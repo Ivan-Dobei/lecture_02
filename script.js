@@ -1,9 +1,9 @@
 // task 1
 
 function addParamsToRequest(params) {
-    let count = 0;
+    let count = -1;  // fixed
     return function (data) {
-        count++;
+        ++count;
         return {...params, ...data, count};
     }
 }
@@ -29,12 +29,9 @@ const obj = {
 }
 
 obj.getData.call({name: "Nick", age: 45});
+let setContextForObj = obj.getData.bind({name: 'Cris', age: 25}); // fixed
 
-function setContextForObj (name, age) {
-    obj.getData.call({name, age});
-}
-
-setContextForObj("Cris", 25);
+setContextForObj();
 
 // task 3
 
